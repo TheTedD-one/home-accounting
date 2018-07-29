@@ -3,6 +3,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {UsersService} from '../../shared/services/users.service';
 import {User} from '../../shared/models/user.model';
 import {Message} from '../../shared/models/message.model';
+import {AuthService} from '../../shared/services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'ha-login',
@@ -14,7 +16,11 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   message: Message = new Message('danger', '');
 
-  constructor(private usersService: UsersService) { }
+  constructor(
+    private usersService: UsersService,
+    private authService: AuthService,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -30,7 +36,10 @@ export class LoginComponent implements OnInit {
       .subscribe((user: User) => {
         if (user) {
           if (user.password === formData.password) {
-            // logic
+            this.message.text = '';
+            window.localStorage.setItem('user', JSON.stringify(user));
+            this.authService.logIn();
+            // this.router.navigate(['']);
           } else {
             this.showMessage('Пароль не верный');
           }
