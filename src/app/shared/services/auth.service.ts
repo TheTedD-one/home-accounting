@@ -7,7 +7,7 @@ export class AuthService {
 
   logOut() {
     this.isAuthenticated = false;
-    window.localStorage.clear;
+    window.localStorage.clear();
   }
 
   isLogedIn(): boolean {
