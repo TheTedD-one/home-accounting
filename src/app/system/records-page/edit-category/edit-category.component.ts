@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {NgForm} from '@angular/forms';
+import {Category} from '../../shared/models/category.model';
 
 @Component({
   selector: 'ha-edit-category',
@@ -7,9 +9,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditCategoryComponent implements OnInit {
 
+  @Input() categories: Category[] = [];
+  // @Output() onCategoryEdit = new EventEmitter<Category>();
+
+  currentCategoryId = 1;
+  currentCategory: Category;
+
   constructor() { }
 
   ngOnInit() {
+    // this.onCategoryChange();
   }
 
+  onSubmit(form: NgForm) {
+    // console.log(form);
+  }
+
+  onCategoryChange() {
+    console.log(this.categories);
+    // this.currentCategory = this.categories
+    //   .find(c => c.id === +this.currentCategory.id);
+  }
 }
