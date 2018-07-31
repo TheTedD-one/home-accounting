@@ -10,7 +10,7 @@
       <ha-add-event></ha-add-event>
     </div>
     <div class="col-md-6">
-      <ha-add-category></ha-add-category>
+      <ha-add-category (onCategoryAdd)="newCategoryAdded($event)"></ha-add-category>
     </div>
   </div>
   <div class="row">

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Category} from '../shared/models/category.model';
 
 @Component({
   selector: 'ha-records-page',
@@ -9,7 +10,10 @@ export class RecordsPageComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  newCategoryAdded(category: Category) {
+    // add to array
   }
 
 }
