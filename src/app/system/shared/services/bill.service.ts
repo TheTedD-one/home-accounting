@@ -16,7 +16,8 @@ export class BillService {
       .pipe(map((bill: Bill) => bill));
   }
 
-  getCurrency() {
-    //return this.http.get(``)
+  getCurrency(): Observable<any> {
+        return this.http.get(`http://data.fixer.io/api/latest?access_key=198ba38a53a6c19cd31e439f1184142b&symbols=usd,rub`)
+      .pipe(map((response: Response) => response));
   }
 }
