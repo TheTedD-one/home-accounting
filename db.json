@@ -8,8 +8,8 @@
     }
   ],
   "bill": {
-    "value": 100000,
-    "currency": "RUB"
+    "value": 100,
+    "currency": "EUR"
   },
   "categories": [
     {
