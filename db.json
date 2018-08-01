@@ -26,16 +26,6 @@
       "id": 3,
       "name": "Машина",
       "capacity": 7000
-    },
-    {
-      "name": "New",
-      "capacity": 7000,
-      "id": 4
-    },
-    {
-      "name": "NoWay",
-      "capacity": 89000,
-      "id": 5
     }
   ],
   "events": [

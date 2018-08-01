@@ -20,4 +20,8 @@ export class BillService extends BaseApi {
     return this.http.get(`http://data.fixer.io/api/latest?access_key=198ba38a53a6c19cd31e439f1184142b&symbols=usd,rub`)
       .pipe(map((response: Response) => response));
   }
+
+  updateBill(bill: Bill): Observable<Bill> {
+    return this.put(`/bill`, bill);
+  }
 }
