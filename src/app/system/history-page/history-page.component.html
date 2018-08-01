@@ -9,9 +9,14 @@
 </div>
 
 <div *ngIf="isLoaded">
-  <ha-history-chart [data]="chartData"></ha-history-chart>
+  <ha-history-chart
+    [data]="chartData"
+  ></ha-history-chart>
 
-  <ha-history-events></ha-history-events>
+  <ha-history-events
+    [categories]="categories"
+    [events]="events"
+  ></ha-history-events>
 
   <ha-history-filter></ha-history-filter>
 </div>
