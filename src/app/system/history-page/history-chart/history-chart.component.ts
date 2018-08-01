@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'ha-history-chart',
@@ -7,22 +7,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HistoryChartComponent implements OnInit {
 
-  data: any[] = [
-    {
-      'name': 'Germany',
-      'value': 8940000
-    },
-    {
-      'name': 'USA',
-      'value': 5000000
-    },
-    {
-      'name': 'France',
-      'value': 7200000
-    }
-  ];
+  @Input() data;
 
   view: any[] = [545, 355];
+
+  // data: any[] = [
+  //   {
+  //     'name': 'Germany',
+  //     'value': 8940000
+  //   },
+  //   {
+  //     'name': 'USA',
+  //     'value': 5000000
+  //   },
+  //   {
+  //     'name': 'France',
+  //     'value': 7200000
+  //   }
+  // ];
 
   constructor() { }
 

@@ -4,8 +4,14 @@
   </h3>
 </div>
 
-<ha-history-chart></ha-history-chart>
+<div *ngIf="!isLoaded" class="text-center">
+  Loading...
+</div>
 
-<ha-history-events></ha-history-events>
+<div *ngIf="isLoaded">
+  <ha-history-chart [data]="chartData"></ha-history-chart>
 
-<ha-history-filter></ha-history-filter>
+  <ha-history-events></ha-history-events>
+
+  <ha-history-filter></ha-history-filter>
+</div>
