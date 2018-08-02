@@ -4,6 +4,7 @@ import {EventsService} from '../shared/services/events.service';
 import {combineLatest, Subscription} from 'rxjs';
 import {Category} from '../shared/models/category.model';
 import {HAEvent} from '../shared/models/haEvent.model';
+import * as moment from 'moment';
 
 @Component({
   selector: 'ha-history-page',
@@ -18,6 +19,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
 
   categories: Category[] = [];
   events: HAEvent[] = [];
+  filteredEvents: HAEvent[] = [];
 
   chartData = [];
 
@@ -34,6 +36,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
       this.categories = categories;
       this.events = events;
 
+      this.setOriginalEvents();
       this.calculateChartData();
       this.isLoaded = true;
     });
@@ -49,7 +52,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
     this.chartData = [];
 
     this.categories.forEach((cat) => {
-      const catEvents = this.events
+      const catEvents = this.filteredEvents
         .filter((event) => event.category === cat.id && event.type === 'outcome');
 
       this.chartData.push({
@@ -71,10 +74,34 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
   }
 
   onFilterApply(data) {
-    console.log(data);
+    this.toggleFilterVisibility(false);
+    this.setOriginalEvents();
+
+    const startPeriod = moment().startOf(data.period).startOf('d');
+    const endPeriod = moment().endOf(data.period).startOf('d');
+
+    this.filteredEvents = this.filteredEvents
+      .filter((e) => {
+        return data.types.indexOf(e.type) !== -1;
+      })
+      .filter((e) => {
+        return data.categories.indexOf(e.category.toString()) !== -1;
+      })
+      .filter((e) => {
+        const momentDate = moment(e.date, 'DD.MM.YYYY HH:mm:ss');
+        return momentDate.isBetween(startPeriod, endPeriod);
+      });
+
+    this.calculateChartData();
   }
 
   onFilterCancel() {
     this.toggleFilterVisibility(false);
+    this.setOriginalEvents();
+    this.calculateChartData();
+  }
+
+  private setOriginalEvents() {
+    this.filteredEvents = this.events.slice();
   }
 }

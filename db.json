@@ -8,7 +8,7 @@
     }
   ],
   "bill": {
-    "value": 100,
+    "value": 150,
     "currency": "EUR"
   },
   "categories": [
@@ -26,11 +26,6 @@
       "id": 3,
       "name": "Машина",
       "capacity": 7000
-    },
-    {
-      "name": "Ruslan",
-      "capacity": 1000,
-      "id": 4
     }
   ],
   "events": [
@@ -73,6 +68,14 @@
       "date": "10.06.2017 14:01:58",
       "id": 5,
       "description": "Заправка + проход ТО"
+    },
+    {
+      "type": "income",
+      "amount": 50,
+      "category": 1,
+      "date": "02.08.2018 11:19:15",
+      "description": "asd",
+      "id": 6
     }
   ]
 }
