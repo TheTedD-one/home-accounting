@@ -11,8 +11,8 @@ import {NgxChartsModule} from '@swimlane/ngx-charts';
   exports: [
     ReactiveFormsModule,
     FormsModule,
-    NgxChartsModule
-  ]
+    NgxChartsModule,
+  ],
 })
 
 export class SharedModule { }

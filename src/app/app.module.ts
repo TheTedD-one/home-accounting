@@ -11,10 +11,12 @@ import {SystemModule} from './system/system.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {AuthGuard} from './shared/services/auth.guard';
+import {NotFoundComponent} from './shared/components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
