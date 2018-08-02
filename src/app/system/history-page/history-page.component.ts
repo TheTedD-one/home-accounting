@@ -13,6 +13,7 @@ import {HAEvent} from '../shared/models/haEvent.model';
 export class HistoryPageComponent implements OnInit, OnDestroy {
 
   sub1: Subscription;
+  isFilterVisible = false;
   isLoaded = false;
 
   categories: Category[] = [];
@@ -61,4 +62,19 @@ export class HistoryPageComponent implements OnInit, OnDestroy {
     });
   }
 
+  openFilter() {
+    this.toggleFilterVisibility(true);
+  }
+
+  toggleFilterVisibility(dir: boolean) {
+    this.isFilterVisible = dir;
+  }
+
+  onFilterApply(data) {
+    console.log(data);
+  }
+
+  onFilterCancel() {
+    this.toggleFilterVisibility(false);
+  }
 }
